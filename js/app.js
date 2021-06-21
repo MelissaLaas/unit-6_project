@@ -22,51 +22,63 @@ const phrases = [
     'javascript is killing me'
 ];
 
+//start the game
+startGame();
+
+function startGame(){
+    startButton.addEventListener('click', (e) =>{
+          
+        startScreen.style.display = 'none';
+        let randomPhrase = getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay(randomPhrase); 
+    });
+}
+
 //Functions to split the array phrases into strings
 function getRandomPhraseAsArray(arr){
-    let randomNumber = Math.floor(Math.random() * arr.length);
-    let result = phrases[randomNumber].split('');
-    return result;
+    const i = Math.floor(Math.random() * arr.length);
+    const randomPhrase = arr[i];
+    const phraseArray = randomPhrase.split('');
+    return phraseArray;
 } 
 
 //Add loop for each character
 function addPhraseToDisplay(arr){
     const li = document.createElement('li');
-    const ul = document.getElementById('phrase');
+    const ul = document.getElementById('phrase').firstElementChild;
     
     for (i = 0; i < arr.length; i++) {
-        let character = arr[i];
+        const character = arr[i];
         li.textContent = character; 
-        ul.appendChild(li);
 
     //if character has a letter and no space
-        if ( character == ' ') {
-            li.className = "letter";
+        if ( character !== ' ') {
+            li.className = 'letter';
         } else {
-            li.className = "space";
+            li.className = 'space';
         }
     }
-    return ul;
+
+    ul.appendChild(li);;
 }
 
 //call the add phrase - display function on screen
-addPhraseToDisplay(getRandomPhraseAsArray(phrases));
+// addPhraseToDisplay(getRandomPhraseAsArray(phrases));
 
 //Create a checkLetter function.
 function checkLetter(button) {
-    const letters = document.querySelectorAll('#phrase li');
+    const list = document.querySelectorAll('#phrase li');
     let match = null;
 
     const chosenLetter = button.textContent;
-    for (let i = 0; i < letters.length; i++) {
-        const li = letters[i];
+    for (let i = 0; i < list.length; i++) {
+        const li = list[i];
 
-        if (li.textContent.toLowerCase().includes(chosenLetter)) {
-            letters[i].className = "show";
+        if (chosenLetter === li.textContent.toLowerCase()) {
+            li.className += " " + "show";
             match = chosenLetter;
         }
-    }
-    return match;
+    } return match;
 }
 
 //Add an event listener to the keyboard.
@@ -76,36 +88,40 @@ qwerty.addEventListener('click', (e) => {
     let button = e.target;
 
     if (button.className === "chosen" || button.parentNode.className !== "keyrow"){
-        return null;
+        return;
     }
         button.className = 'chosen';
-        button.disabled = true;
         const check = checkLetter(button);
-        const heart = document.querySelectorAll('.tries img');
     
         if (check === null) {
-            heart[missed].src = 'images/lostHeart.png';
+            const heart = document.querySelectorAll('.tries img').firstElementChild;
             missed +=1;
+            heart.src = 'images/lostHeart.png';
     }
+
     checkWin();
 }); 
 
 //function that will display win/loose 
 function checkWin() {
-    const letterClass = document.querySelectorAll('.letter');
-    const showClass = document.querySelectorAll('.show');
+    const lettersToGuessed = document.querySelectorAll('.letter');
+    const guessedLetters = document.querySelectorAll('.show');
 
-    if(letterClass.length === showClass.length) {
-        overlay.className = 'start' + 'win';
-        overlay.textContent = 'Congratulations! You are the winner!';
-        overlay.style.display = 'flex';
-        startButton.textContent = 'Play Again';
+    const headline = document.querySelector('.title');
 
-    } else if (missed > 4){
-        overlay.className = 'start' + 'lose';
-        overlay.textContent = 'Sorry, you loose...';
-        overlay.style.display = 'flex';
-        startButton.textContent = 'Play Again';
+    if(lettersToGuessed.length === guessedLetters.length) {
+        overlay.className = "start" + 'win';
+        overlay.style.display = "";
+        headline.textContent = 'Congratulations! You are the winner!';
+        overlay.display = 'flex';
+        resetGame();
+
+    } if (missed > 4){
+        overlay.className = "start" + 'lose';
+        overlay.style.display = "";
+        headline.textContent = 'Sorry, you lost...';
+        overlay.display = 'flex';
+        resetGame();
     }
 };
 
