@@ -15,11 +15,11 @@ startButton.addEventListener('click', () => {
 
 //Phrases array
 const phrases = [
-    'learn to rest not to quit',
-    'everything is a choice',
+    'happiness is key',
+    'choose wisely',
     'believe in yourself',
     'enjoy life',
-    'i love JavaScript'
+    'javascript is killing me'
 ];
 
 //Functions to split the array phrases into strings
