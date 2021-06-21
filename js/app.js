@@ -41,7 +41,7 @@ qwerty.addEventListener('click', (e) => {
         if (check === null) {
             const heart = document.querySelectorAll('.tries img').firstElementChild;
             missed +=1;
-            heart.src = 'images/lostHeart.png';
+            heart[i].src = 'images/lostHeart.png';
     }
 
     checkWin();
@@ -70,9 +70,8 @@ function addPhraseToDisplay(arr){
         } else {
             li.className = 'space';
         }
+     ul.appendChild(li);;
     }
-
-    ul.appendChild(li);;
 }
 
 //Create a checkLetter function.
@@ -91,7 +90,7 @@ function checkLetter(button) {
     } return match;
 }
 
-//function that will display if user win/loose 
+//function that will display if user win/lose 
 function checkWin() {
     let lettersToGuess = document.querySelectorAll('.letter');
     let guessedLetters = document.querySelectorAll('.show');
@@ -99,14 +98,14 @@ function checkWin() {
     const headline = document.querySelector('.title');
 
     if(lettersToGuess.length === guessedLetters.length) {
-        overlay.className = "start" + 'win';
+        overlay.classList.add('win');
         overlay.style.display = "";
         headline.textContent = 'Congratulations! You are the winner!';
         overlay.display = 'flex';
         resetGame();
 
     } if (missed > 4){
-        overlay.className = "start" + 'lose';
+        overlay.classList.add('lose');;
         overlay.style.display = "";
         headline.textContent = 'Sorry, you lost...';
         overlay.display = 'flex';
@@ -142,7 +141,7 @@ function resetLives() {
     const hearts = document.querySelectorAll('.tries img');
     for(let i = 0; i = hearts.length; i++){
         const img = hearts[i].firstElementChild;
-        img.src = 'image/liveHeart.png';
+        img[i].src  = 'image/liveHeart.png';
     }
 }
 
