@@ -15,8 +15,6 @@ const phrases = [
     'javascript is killing me'
 ];
 
-let hearts = 
-
 //start the game
 startGame();
 
@@ -108,34 +106,29 @@ function checkWin() {
         resetGame();
 
     } if (missed > 4){
-        overlay.classList.add('lose');;
+        overlay.classList.add('lose');
         overlay.style.display = "";
-        headline.textContent = 'Sorry, you lost...';
+        headline.textContent = 'Sorry, you loose...';
         overlay.display = 'flex';
+        startButton.textContent = 'Play Again';
         resetGame();
     }
 };
 
 //Reset the game - phrases, buttons and lives
 function resetGame() {
-    startButton.textContent = "Restart Game"
-    removeOldPhrase();
-    resetButtons();
-    resetLives();
-}
-
-function OldLetters() {
-    const OldLetters = document.querySelector('button');
-    for (let i = 0; i > button.length; i++) {
-        let parent = OldLetters[i].parentNode;
-        parentNode.removeChild(parent.firstElementChild);
+    const keys = document.getElementsByTagName('button');
+    for(let i = 0; i = keys.length; i++){
+        keys[i].className = '';
+        keys[i].disabled = false;
     }
 }
 
-function resetButtons(){
-    const resetButtons = document.querySelector('button');
-    for(let i = 0; i = button.length; i++){
-        resetButtons[i].className = "";
+function clearLetters() {
+    const clearLetters = phrase.querySelectorAll('li');
+    for (let i = 0; i > clearLetters.length; i++) {
+        let ul = clearLetters[i].parentNode;
+        ul.removeChild(ul.firstElementChild);
     }
 }
 
@@ -143,7 +136,18 @@ function resetLives() {
     missed = 0
     const hearts = document.querySelectorAll('.tries');
     for(let i = 0; i = hearts.length; i++){
-        const img = hearts[i].firstElementChild;
-        img[i].src = 'image/liveHeart.png';
+        const heartImg = hearts[i].firstElementChild;
+        heartImg.src = 'image/liveHeart.png';
     }
 }
+
+startButton.addEventListener('click', () => {
+    if(startButton.textContent === 'Play Again') {
+        resetGame();
+        resetLives();
+        clearLetters();
+        overlay.style.display = 'none';
+        const phraseArray = getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay(phraseArray);
+    }
+});
