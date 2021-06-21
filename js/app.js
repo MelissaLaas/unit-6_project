@@ -1,6 +1,6 @@
 //variables
-const qwerty = document.querySelector('#qwerty');
-const phrase = document.querySelector('#phrase');
+const qwerty = document.getElementById('qwerty');
+const phrase = document.getElementById('phrase');
 let missed = 0;
 
 const startButton = document.querySelector('.btn__reset');
@@ -14,6 +14,8 @@ const phrases = [
     'enjoy life',
     'javascript is killing me'
 ];
+
+let hearts = 
 
 //start the game
 startGame();
@@ -36,12 +38,13 @@ qwerty.addEventListener('click', (e) => {
         return;
     }
         button.className = 'chosen';
-        const check = checkLetter(button);
+        button.disabled = true;
+        let check = checkLetter(button);
+        const heart = document.querySelectorAll('.tries img');
     
         if (check === null) {
-            const heart = document.querySelectorAll('.tries img').firstElementChild;
-            missed +=1;
-            heart[i].src = 'images/lostHeart.png';
+            heart[missed].src = 'images/lostHeart.png';
+            missed += 1;
     }
 
     checkWin();
@@ -121,27 +124,26 @@ function resetGame() {
     resetLives();
 }
 
-function removeOldPhrase() {
-    const OldLetters = phrase.querySelector('button');
-    for (let i = 0; i > buttons.length; i++) {
+function OldLetters() {
+    const OldLetters = document.querySelector('button');
+    for (let i = 0; i > button.length; i++) {
         let parent = OldLetters[i].parentNode;
         parentNode.removeChild(parent.firstElementChild);
     }
 }
 
 function resetButtons(){
-    const buttons = document.querySelector('button');
-    for(let i = 0; i = buttons.length; i++){
-        buttons[i].className = "";
+    const resetButtons = document.querySelector('button');
+    for(let i = 0; i = button.length; i++){
+        resetButtons[i].className = "";
     }
 }
 
 function resetLives() {
     missed = 0
-    const hearts = document.querySelectorAll('.tries img');
+    const hearts = document.querySelectorAll('.tries');
     for(let i = 0; i = hearts.length; i++){
         const img = hearts[i].firstElementChild;
-        img[i].src  = 'image/liveHeart.png';
+        img[i].src = 'image/liveHeart.png';
     }
 }
-
