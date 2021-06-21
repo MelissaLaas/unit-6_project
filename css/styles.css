@@ -27,7 +27,9 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image: linear-gradient(rgb(215 215 216) 20%, rgba(37, 20, 19, 0.733) 69%), url(../images/background.png);
   background-color: white;
+  transition: .5s;
 }
 
 li, ol, ul {
@@ -47,7 +49,7 @@ button {
   margin: 6px;
   border: 1px solid transparent;
   padding: .5rem 1rem;
-  color: var(--color-keys);
+  color: #383838;
   font-size: var(--font-size-medium);
   background-color: var(--color-keys-light);
   border-radius: 5px;
@@ -74,19 +76,24 @@ button {
 
 .header {
   color: var(--color-start);
+  color: #FFF;
+  text-shadow: 2px 2px 5px #726f6f;
 }
 
 /* Phrase */
 
 .letter {
+  text-align: center;
+  text-transform: uppercase;
   font-size: var(--font-size-medium);
-  height: 65px;
-  width: 65px;
-  padding: 20px 1px 0 1px;
-  margin-right: 2px;
+  height: 50px;
+  width: 50px;
+  padding: 5px 5px;
+  margin-right: 3px;
+  margin-bottom: 5px;
   color: transparent;
-  background: var(--color-neutral-light);
-  border-radius: 5px;
+  background: #6d564d;
+  border-radius: 5px solid black;
   transition: .5s;
 }
 
@@ -95,22 +102,25 @@ button {
 }
 
 .show {
-  color: #000;
-  background-color: #76CE82;
+  color: #fbfbfb;
+  background-color: #d09b8c;
+  padding: 5px;
 }
 
 /* Keyboard */
 
 .keyrow {
   display: flex;
+  padding: 3px;
+  grid-gap: 5px;
   justify-content: center;
 }
 
 .chosen {
-  background: var(--color-neutral);
+  background: #5b5c5f;
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: #ffffff12;
 }
 
 .btn__reset {
@@ -123,12 +133,12 @@ button {
 
 /* Overlay */
 
-#overlay { 
+#overlay {
   display: flex;
   flex-direction: column;
   position: fixed;
   color: #FFFFFF;
-  background-image: linear-gradient(rgb(215 215 216) 38%, rgba(37, 20, 19, 0.733) 69%), url(/images/background.png);
+  background-image: linear-gradient(rgb(215 215 216) 20%, rgba(37, 20, 19, 0.733) 69%), url(../images/background.png);
   background-size: cover;
   justify-content: center;
   top: 0;
@@ -140,7 +150,7 @@ button {
 
 .title {
   color: #FFF;
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 2px 2px 5px #726f6f;
   text-shadow: 10 0 black;
 }
 
@@ -150,12 +160,13 @@ button {
 
 .start a {
   padding: 19px 39px 18px 39px;
-  color: #FFF;
+  color: #747373;
   transition: 0.5s;
   background-size: 200% auto;
   box-shadow: 0 0 5px #eee;
-  background-image: linear-gradient(to right, #e9c4a6 4%, #f04e30 52%, #efded0 100%);
-  font-size: 20px;
+  background-image: linear-gradient(to right, #ffc18f 4%, #e9ffbc 52%, #efded0 100%);
+  font-size: 23px;
+  text-transform: uppercase;
   text-align: center;
   border-radius: 5px;
   border-style: hidden;
@@ -176,5 +187,6 @@ button {
 }
 
 .lose a {
-  color: var(--color-lose);
+  color: #edc1c1;
+  background-image: linear-gradient(to right, #e50000 4%, #000000 52%, #efded0 100%);
 }

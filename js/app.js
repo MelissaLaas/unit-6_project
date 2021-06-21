@@ -84,7 +84,7 @@ qwerty.addEventListener('click', (e) => {
         const heart = document.querySelectorAll('.tries img');
     
         if (check === null) {
-            heart[missed].src = 'images/lostHeart.png';
+            heart[missed].src = 'images/lostHeart1.png';
             missed += 1;
     }
 
@@ -134,7 +134,7 @@ function resetLives() {
     const hearts = document.querySelectorAll('.tries');
     for(let i = 0; i < hearts.length; i++){
         const heartImg = hearts[i].firstElementChild;
-        heartImg.src = 'images/liveHeart.png';
+        heartImg.src = 'images/liveHeart1.png';
     }
 }
 
