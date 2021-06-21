@@ -55,12 +55,12 @@ function getRandomPhraseAsArray(arr){
     return phraseArray;
 } 
 
-//Add loop for each character
+//Append all letters to the phrases
 function addPhraseToDisplay(arr){
-    const li = document.createElement('li');
     const ul = document.getElementById('phrase').firstElementChild;
     
     for (i = 0; i < arr.length; i++) {
+        const li = document.createElement('li');
         const character = arr[i];
         li.textContent = character; 
 
