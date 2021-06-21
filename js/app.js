@@ -24,32 +24,32 @@ const phrases = [
 
 //Functions to split the array phrases into strings
 function getRandomPhraseAsArray(arr){
-    const randomNumber = Math.floor(Math.random() * arr.length);
-    const randomPhrase = arr[randomNumber];
-    const splitPhrases = randomPhrase.split('');
-    return splitPhrases;
+    let randomNumber = Math.floor(Math.random() * arr.length);
+    let result = phrases[randomNumber].split();
+    return result;
 } 
-
-const phraseArray = getRandomPhraseAsArray(phrases);
 
 //Add loop for each character
 function addPhraseToDisplay(arr){
-    for (i = 0; i < 0; i++) {
+    for (i = 0; i < arr.length; i++) {
         const li = document.createElement('li');
         const ul = document.getElementById('phrase');
         let character = arr[i];
         li.textContent = character; 
-    
-    //if character has a letter and no space
-    if ( li.textContent !== ' ') {
-        li.className = "letter";
-    } else {
-        li.className = "space";
-    }
+        ul.appendChild(li);
 
-    ul.appendChild(li);
+    //if character has a letter and no space
+        if ( character == ' ') {
+            li.className = "letter";
+        } else {
+            li.className = "space";
+        }
     }
+    return ul;
 }
+
+//call the add phrase - display function on screen
+addPhraseToDisplay(getRandomPhraseAsArray(phrases));
 
 //Create a checkLetter function.
 // const button = document.getElementsByTagName('button');
