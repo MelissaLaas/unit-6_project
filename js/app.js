@@ -1,3 +1,4 @@
+//variables
 const qwerty = document.querySelector('#qwerty');
 const phrase = document.querySelector('#phrase');
 let missed = 0;
@@ -14,11 +15,11 @@ startButton.addEventListener('click', () => {
 
 //Phrases array
 const phrases = [
-    'Learn to rest not to quit',
-    'Everything is a choice',
-    'Believe in yourself',
-    'Enjoy life',
-    'I love JavaScript'
+    'learn to rest not to quit',
+    'everything is a choice',
+    'Bbelieve in yourself',
+    'enjoy life',
+    'i love JavaScript'
 ];
 
 //Functions to split the array phrases into strings
@@ -29,7 +30,6 @@ function getRandomPhraseAsArray(arr){
     return splitPhrases;
 } 
 
-//Keep split array
 const phraseArray = getRandomPhraseAsArray(phrases);
 
 //Add loop for each character
@@ -58,7 +58,7 @@ function checkLetter(button) {
     let match = null;
 
     const chosenLetter = button.textContent;
-    for (let i = 0; i < letters.length; i++){
+    for (let i = 0; i < letters.length; i++) {
         const li = letters[i];
 
         if (chosenLetter === li.textContent.toLowerCase()) {
@@ -94,7 +94,6 @@ qwerty.addEventListener('click', (e) => {
 function checkWin() {
     const letterClass = document.querySelectorAll('.letter');
     const showClass = document.querySelectorAll('.show');
-    let title = document.querySelector('.title');
 
     if(letterClass.length === showClass.length) {
         overlay.className = 'start' + 'win';
@@ -109,3 +108,4 @@ function checkWin() {
         startButton.textContent = 'Play Again';
     }
 };
+
