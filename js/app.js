@@ -97,13 +97,13 @@ function checkWin() {
     let title = document.querySelector('.title');
 
     if(letterClass.length === showClass.length) {
-        overlay.className = 'win';
+        overlay.className = 'start' + 'win';
         overlay.textContent = 'Congratulations! You are the winner!';
         overlay.style.display = 'flex';
         startButton.textContent = 'Play Again';
 
     } else if (missed > 4){
-        overlay.className = 'lose';
+        overlay.className = 'start' + 'lose';
         overlay.textContent = 'Sorry, you loose...';
         overlay.style.display = 'flex';
         startButton.textContent = 'Play Again';
