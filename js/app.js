@@ -17,7 +17,7 @@ startButton.addEventListener('click', () => {
 const phrases = [
     'learn to rest not to quit',
     'everything is a choice',
-    'Bbelieve in yourself',
+    'believe in yourself',
     'enjoy life',
     'i love JavaScript'
 ];
@@ -25,15 +25,16 @@ const phrases = [
 //Functions to split the array phrases into strings
 function getRandomPhraseAsArray(arr){
     let randomNumber = Math.floor(Math.random() * arr.length);
-    let result = phrases[randomNumber].split();
+    let result = phrases[randomNumber].split('');
     return result;
 } 
 
 //Add loop for each character
 function addPhraseToDisplay(arr){
+    const li = document.createElement('li');
+    const ul = document.getElementById('phrase');
+    
     for (i = 0; i < arr.length; i++) {
-        const li = document.createElement('li');
-        const ul = document.getElementById('phrase');
         let character = arr[i];
         li.textContent = character; 
         ul.appendChild(li);
@@ -52,7 +53,6 @@ function addPhraseToDisplay(arr){
 addPhraseToDisplay(getRandomPhraseAsArray(phrases));
 
 //Create a checkLetter function.
-// const button = document.getElementsByTagName('button');
 function checkLetter(button) {
     const letters = document.querySelectorAll('#phrase li');
     let match = null;
@@ -61,7 +61,7 @@ function checkLetter(button) {
     for (let i = 0; i < letters.length; i++) {
         const li = letters[i];
 
-        if (chosenLetter === li.textContent.toLowerCase()) {
+        if (li.textContent.toLowerCase().includes(chosenLetter)) {
             letters[i].className = "show";
             match = chosenLetter;
         }
