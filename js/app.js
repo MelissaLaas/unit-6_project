@@ -1,6 +1,6 @@
 //variables
 const qwerty = document.getElementById('qwerty');
-const phrase = document.getElementById('phrase');
+const phrase = document.querySelector('#phrase ul');
 let missed = 0;
 
 const startButton = document.querySelector('.btn__reset');
@@ -118,7 +118,7 @@ function checkWin() {
 //Reset the game - phrases, buttons and lives
 function resetGame() {
     const keys = document.getElementsByTagName('button');
-    for(let i = 0; i = keys.length; i++){
+    for(let i = 0; i < keys.length; i++){
         keys[i].className = '';
         keys[i].disabled = false;
     }
@@ -126,7 +126,7 @@ function resetGame() {
 
 function clearLetters() {
     const clearLetters = phrase.querySelectorAll('li');
-    for (let i = 0; i > clearLetters.length; i++) {
+    for (let i = 0; i < clearLetters.length; i++) {
         let ul = clearLetters[i].parentNode;
         ul.removeChild(ul.firstElementChild);
     }
@@ -135,7 +135,7 @@ function clearLetters() {
 function resetLives() {
     missed = 0
     const hearts = document.querySelectorAll('.tries');
-    for(let i = 0; i = hearts.length; i++){
+    for(let i = 0; i < hearts.length; i++){
         const heartImg = hearts[i].firstElementChild;
         heartImg.src = 'image/liveHeart.png';
     }
