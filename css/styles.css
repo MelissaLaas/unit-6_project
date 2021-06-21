@@ -27,6 +27,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: white;
 }
 
 li, ol, ul {
@@ -86,6 +87,7 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  transition: .5s;
 }
 
 .space {
@@ -121,11 +123,13 @@ button {
 
 /* Overlay */
 
-#overlay {
+#overlay { 
   display: flex;
   flex-direction: column;
   position: fixed;
   color: #FFFFFF;
+  background-image: linear-gradient(rgb(215 215 216) 38%, rgba(37, 20, 19, 0.733) 69%), url(/images/background.png);
+  background-size: cover;
   justify-content: center;
   top: 0;
   bottom: 0;
@@ -136,14 +140,27 @@ button {
 
 .title {
   color: #FFF;
+  text-shadow: 2px 2px 5px black;
+  text-shadow: 10 0 black;
 }
 
 .start {
-  background-color: var(--color-start);
+  background-color: white;
 }
 
 .start a {
-  color: var(--color-win);
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  transition: 0.5s;
+  background-size: 200% auto;
+  box-shadow: 0 0 5px #eee;
+  background-image: linear-gradient(to right, #e9c4a6 4%, #f04e30 52%, #efded0 100%);
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  border-style: hidden;
+  width: 50%;
+  margin-bottom: 25px;
 }
 
 .win {

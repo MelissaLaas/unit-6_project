@@ -26,28 +26,6 @@ function startGame(){
     });
 }
 
-//Add an event listener to the keyboard.
-//Button changes when clicked
-//Change scoreboard if user choose wrong letter
-qwerty.addEventListener('click', (e) => {
-    let button = e.target;
-
-    if (button.className === "chosen" || button.parentNode.className !== "keyrow"){
-        return;
-    }
-        button.className = 'chosen';
-        button.disabled = true;
-        let check = checkLetter(button);
-        const heart = document.querySelectorAll('.tries img');
-    
-        if (check === null) {
-            heart[missed].src = 'images/lostHeart.png';
-            missed += 1;
-    }
-
-    checkWin();
-}); 
-
 //Split the array phrases into strings
 function getRandomPhraseAsArray(arr){
     const i = Math.floor(Math.random() * arr.length);
@@ -91,6 +69,29 @@ function checkLetter(button) {
     } return match;
 }
 
+//Add an event listener to the keyboard.
+//Button changes when clicked
+//Change scoreboard if user choose wrong letter
+qwerty.addEventListener('click', (e) => {
+    let button = e.target;
+
+    if (button.className === "chosen" || button.parentNode.className !== "keyrow"){
+        return;
+    }
+        button.className = 'chosen';
+        button.disabled = true;
+        let check = checkLetter(button);
+        const heart = document.querySelectorAll('.tries img');
+    
+        if (check === null) {
+            heart[missed].src = 'images/lostHeart.png';
+            missed += 1;
+    }
+
+    checkWin();
+}); 
+
+
 //function that will display if user win/lose 
 function checkWin() {
     let lettersToGuess = document.querySelectorAll('.letter');
@@ -100,18 +101,14 @@ function checkWin() {
 
     if(lettersToGuess.length === guessedLetters.length) {
         overlay.classList.add('win');
-        overlay.style.display = "";
         headline.textContent = 'Congratulations! You are the winner!';
-        overlay.display = 'flex';
-        resetGame();
+        overlay.style.display = 'flex';
 
     } if (missed > 4){
         overlay.classList.add('lose');
-        overlay.style.display = "";
-        headline.textContent = 'Sorry, you loose...';
-        overlay.display = 'flex';
+        headline.textContent = 'Sorry, you lose...';
+        overlay.style.display = 'flex';
         startButton.textContent = 'Play Again';
-        resetGame();
     }
 };
 
@@ -124,10 +121,10 @@ function resetGame() {
     }
 }
 
-function clearLetters() {
-    const clearLetters = phrase.querySelectorAll('li');
-    for (let i = 0; i < clearLetters.length; i++) {
-        let ul = clearLetters[i].parentNode;
+function clearPhrase() {
+    const previousePhrase = phrase.querySelectorAll('li');
+    for (let i = 0; i < previousePhrase.length; i++) {
+        let ul = previousePhrase[i].parentNode;
         ul.removeChild(ul.firstElementChild);
     }
 }
@@ -137,7 +134,7 @@ function resetLives() {
     const hearts = document.querySelectorAll('.tries');
     for(let i = 0; i < hearts.length; i++){
         const heartImg = hearts[i].firstElementChild;
-        heartImg.src = 'image/liveHeart.png';
+        heartImg.src = 'images/liveHeart.png';
     }
 }
 
@@ -145,7 +142,7 @@ startButton.addEventListener('click', () => {
     if(startButton.textContent === 'Play Again') {
         resetGame();
         resetLives();
-        clearLetters();
+        clearPhrase();
         overlay.style.display = 'none';
         const phraseArray = getRandomPhraseAsArray(phrases);
         addPhraseToDisplay(phraseArray);
