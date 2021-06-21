@@ -101,7 +101,7 @@ function checkWin() {
 
     if(lettersToGuess.length === guessedLetters.length) {
         overlay.classList.add('win');
-        headline.textContent = 'Congratulations! You are the winner!';
+        headline.textContent = 'Congratulations! You win!';
         overlay.style.display = 'flex';
 
     } if (missed > 4){
