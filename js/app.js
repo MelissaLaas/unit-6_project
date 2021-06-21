@@ -75,7 +75,7 @@ function checkLetter(button) {
 qwerty.addEventListener('click', (e) => {
     let button = e.target;
 
-    if (button.className === 'BUTTON' || button.className === 'chosen'){
+    if (button.className === "chosen" || button.parentNode.className !== "keyrow"){
         return null;
     }
         button.className = 'chosen';
