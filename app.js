@@ -13,7 +13,6 @@ startButton.addEventListener('click', () => {
 });
 
 //Phrases array
-const ul = phrase.querySelector('ul');
 const phrases = [
     'Learn to rest not to quit',
     'Everything is a choice',
@@ -26,9 +25,10 @@ const phrases = [
 function getRandomPhraseAsArray(arr){
     const randomNumber = Math.floor(Math.random() * arr.length);
     const randomPhrase = arr[randomNumber];
-    const splitPhrases = randomPhrase.split();
+    const splitPhrases = randomPhrase.split('');
     return splitPhrases;
 } 
+
 //Keep split array
 const phraseArray = getRandomPhraseAsArray(phrases);
 
@@ -36,7 +36,7 @@ const phraseArray = getRandomPhraseAsArray(phrases);
 function addPhraseToDisplay(arr){
     for (i = 0; i < 0; i++) {
         const li = document.createElement('li');
-        const list = document.getElementById('phrase');
+        const ul = document.getElementById('phrase');
         let character = arr[i];
         li.textContent = character; 
     
@@ -46,13 +46,13 @@ function addPhraseToDisplay(arr){
     } else {
         li.className = "space";
     }
+
     ul.appendChild(li);
-    };
+    }
 }
 
 //Create a checkLetter function.
-const button = document.getElementsByTagName('button');
-
+// const button = document.getElementsByTagName('button');
 function checkLetter(button) {
     const letters = document.querySelectorAll('#phrase li');
     let match = null;
@@ -70,6 +70,8 @@ function checkLetter(button) {
 }
 
 //Add an event listener to the keyboard.
+//Button changes when clicked
+//Change scoreboard if user choose wrong letter
 qwerty.addEventListener('click', (e) => {
     let button = e.target;
 
@@ -88,18 +90,22 @@ qwerty.addEventListener('click', (e) => {
     checkWin();
 }); 
 
-//Create a checkWin function.
+//function that will display win/loose 
 function checkWin() {
     const letterClass = document.querySelectorAll('.letter');
     const showClass = document.querySelectorAll('.show');
+    let title = document.querySelector('.title');
 
     if(letterClass.length === showClass.length) {
         overlay.className = 'win';
         overlay.textContent = 'Congratulations! You are the winner!';
         overlay.style.display = 'flex';
+        startButton.textContent = 'Play Again';
+
     } else if (missed > 4){
         overlay.className = 'lose';
         overlay.textContent = 'Sorry, you loose...';
         overlay.style.display = 'flex';
+        startButton.textContent = 'Play Again';
     }
 };
