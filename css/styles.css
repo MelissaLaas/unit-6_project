@@ -174,6 +174,10 @@ button {
   margin-bottom: 25px;
 }
 
+.start a:hover {
+  background-position: right center; 
+}
+
 .win {
   background-color: var(--color-win);
 }
