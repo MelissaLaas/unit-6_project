@@ -142,7 +142,7 @@ function resetLives() {
     const hearts = document.querySelectorAll('.tries img');
     for(let i = 0; i = hearts.length; i++){
         const img = hearts[i].firstElementChild;
-        img.src = "images/liveHeart.png";
+        img.src = 'image/liveHeart.png';
     }
 }
 
