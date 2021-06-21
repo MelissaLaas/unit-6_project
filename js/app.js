@@ -19,8 +19,8 @@ const phrases = [
 startGame();
 
 function startGame(){
-    startButton.addEventListener('click', (e) =>{
-        startScreen.style.display = 'none';
+    startButton.addEventListener('click', (e) => { 
+        overlay.style.display = 'none';
         let randomPhrase = getRandomPhraseAsArray(phrases);
         addPhraseToDisplay(randomPhrase); 
     });
@@ -75,9 +75,6 @@ function addPhraseToDisplay(arr){
     ul.appendChild(li);;
 }
 
-//call the add phrase - display function on screen
-// addPhraseToDisplay(getRandomPhraseAsArray(phrases));
-
 //Create a checkLetter function.
 function checkLetter(button) {
     const list = document.querySelectorAll('#phrase li');
@@ -94,14 +91,14 @@ function checkLetter(button) {
     } return match;
 }
 
-//function that will display win/loose 
+//function that will display if user win/loose 
 function checkWin() {
-    const lettersToGuessed = document.querySelectorAll('.letter');
-    const guessedLetters = document.querySelectorAll('.show');
+    let lettersToGuess = document.querySelectorAll('.letter');
+    let guessedLetters = document.querySelectorAll('.show');
 
     const headline = document.querySelector('.title');
 
-    if(lettersToGuessed.length === guessedLetters.length) {
+    if(lettersToGuess.length === guessedLetters.length) {
         overlay.className = "start" + 'win';
         overlay.style.display = "";
         headline.textContent = 'Congratulations! You are the winner!';
