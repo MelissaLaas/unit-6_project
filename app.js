@@ -8,11 +8,11 @@ const overlay = document.querySelector('#overlay');
 //Start game button
 startButton.addEventListener('click', () => {
     overlay.style.display = 'none';
-    const phraseArray = getRandomPhraseAsArray(phrases);
-    addPhraseToDisplay(phraseArray);
+    // const phraseArray = getRandomPhraseAsArray(phrases);
+    // addPhraseToDisplay(phraseArray);
 });
 
-// Phrases array
+//Phrases array
 const ul = phrase.querySelector('ul');
 const phrases = [
     "Learn to rest not to quit",
@@ -22,7 +22,7 @@ const phrases = [
     "I love JavaScript"
 ];
 
-//Functions to split the array phrases
+//Functions to split the array phrases into strings
 function getRandomPhraseAsArray(arr){
     const randomNumber = Math.floor(Math.random() * arr.length);
     const randomPhrase = arr[randomNumber];
@@ -51,10 +51,14 @@ function addPhraseToDisplay(arr){
 }
 
 //Create a checkLetter function.
+let button = document.getElementsByTagName('button');
+
 function checkLetter(button) {
     const letters = document.querySelectorAll('#phrase li');
-    let letters = null;
-    for (let i = 0; i < li.length; i++){
+    let match = null;
+
+    const chosenLetter = button.textContent;
+    for (let i = 0; i < letters.length; i++){
         const li = letters[i]
         if ( chosenLetter === li.textContent.toLowerCase()) {
             letters[i].className = "show";
@@ -67,9 +71,20 @@ function checkLetter(button) {
 //Add an event listener to the keyboard.
 qwerty.addEventListener('click', (e) => {
     let button = e.target;
-    if (button.className === 'chosen' || button.parentNode.className !== "keyrow") {
+    if (e.target.tagName === 'BUTTON' || e.target.className === 'chosen') {
         return null;
     }
+
+    button.className = "chosen";
+    button.disabled = true;
+    let check = checkLetter(button);
+    const heart = document.querySelectorAll('.tries img');
+
+    if (check === null) {
+        heart[missed].src = 'images/lostHeart.png';
+        missed += 1;
+    }
+    checkWin();
 }); 
 
 //Count the missed guesses in the game.
