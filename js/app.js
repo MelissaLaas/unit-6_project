@@ -103,7 +103,7 @@ function checkWin() {
         overlay.classList.add('win');
         headline.textContent = 'Congratulations! You win!';
         overlay.style.display = 'flex';
-        startButton.textContent = 'Play Again';
+        startButton.textContent = 'Start Game';
 
     } if (missed > 4){
         overlay.classList.add('lose');
@@ -140,7 +140,7 @@ function resetLives() {
 }
 
 startButton.addEventListener('click', () => {
-    if(startButton.textContent === 'Play Again') {
+    if(startButton.textContent === 'Play Again' || startButton.textContent === 'Start Game') {
         resetGame();
         resetLives();
         clearPhrase();
