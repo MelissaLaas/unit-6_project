@@ -190,5 +190,5 @@ button {
 
 .lose a {
   color: #edc1c1;
-  background-image: linear-gradient(to right, #e50000 4%, #000000 52%, #efded0 100%);
+  background-image: linear-gradient(to right, #e50000 4%, #000000 52%, #e50000 100%);
 }

@@ -103,6 +103,7 @@ function checkWin() {
         overlay.classList.add('win');
         headline.textContent = 'Congratulations! You win!';
         overlay.style.display = 'flex';
+        startButton.textContent = 'Play Again';
 
     } if (missed > 4){
         overlay.classList.add('lose');
